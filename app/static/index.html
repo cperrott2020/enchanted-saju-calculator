@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enchanted Saju Calculator</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><main class="shell">
+<header class="hero card"><div><div class="eyebrow">나의 사주 기록 · MY SAJU JOURNAL</div><h1>Enchanted Saju Calculator</h1><p>Deterministic Four Pillars calculation with transparent time correction, boundary checks, and optional Notion saving.</p></div><div class="seal">四柱</div></header>
+<section class="grid two"><form id="chart-form" class="card">
+<h2>Create Saju Profile</h2>
+<label>Name<input name="name" placeholder="Name or identifier"></label>
+<div class="grid two"><label>Sex<select name="sex"><option value="unspecified">Unspecified</option><option value="female">Female</option><option value="male">Male</option></select></label><label>Birth date<input name="birth_date" type="date" required></label></div>
+<div class="grid two"><label>Birth time<input name="birth_time" type="time"></label><label>Time status<select name="time_status"><option value="exact">Exact</option><option value="approximate">Approximate</option><option value="unknown">Unknown</option></select></label></div>
+<label>Birthplace<input name="place" placeholder="Cork, Ireland"></label>
+<button type="button" id="lookup-place" class="secondary">Find coordinates/timezone</button>
+<div id="place-message" class="micro"></div>
+<div class="grid three"><label>Latitude<input name="latitude" type="number" step="0.000001" required></label><label>Longitude<input name="longitude" type="number" step="0.000001" required></label><label>Timezone<input name="timezone" placeholder="Europe/Dublin" required></label></div>
+<details><summary>Advanced calculation settings</summary><label><input type="checkbox" name="use_true_solar_time" checked> Apply true/local solar time</label><label>Day boundary<select name="day_boundary"><option value="midnight">Midnight</option><option value="zi_start">Zi hour 23:00</option></select></label><label>Major Luck direction<select name="luck_direction"><option value="auto">Auto</option><option value="forward">Forward</option><option value="backward">Backward</option></select></label></details>
+<button class="primary" type="submit">Calculate chart</button><div id="error" class="error hidden"></div>
+</form>
+<aside class="card note"><h2>Accuracy-first</h2><p>Calculation and interpretation remain separate.</p><ul><li>Exact Ipchun boundary</li><li>Solar-term Month Pillar</li><li>Historical timezone/DST</li><li>Solar correction</li><li>Day Master + Ten Gods</li><li>Hidden Stems</li><li>Relationships</li><li>12 Growth Stages</li><li>Void</li><li>Daewoon</li></ul><p class="warning">ForceTeller compatibility is validation-pending, not falsely asserted.</p></aside></section>
+<section id="results" class="hidden"><section class="card"><h2>Verify Chart</h2><div id="verification"></div><div id="warnings"></div></section><section class="card"><h2>Four Pillars</h2><div id="pillars" class="pillars"></div></section><section class="grid two"><section class="card"><h2>Day Master & Five Elements</h2><div id="day-master"></div><div id="elements"></div></section><section class="card"><h2>Relationships</h2><div id="relationships"></div></section></section><section class="grid two"><section class="card"><h2>Void / Emptiness</h2><div id="void"></div></section><section class="card"><h2>Major Luck Cycles</h2><div id="daewoon"></div></section></section><section class="card"><details><summary>Calculation audit</summary><pre id="audit"></pre></details></section><section class="card save"><button id="save-notion" class="primary">Save verified chart to Notion</button><div id="save-message"></div></section></section>
+</main><script src="/static/app.js"></script></body></html>
