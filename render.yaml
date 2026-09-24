@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: enchanted-saju-calculator
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
